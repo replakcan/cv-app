@@ -1,25 +1,37 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-function PracticalExperienceSection() {
-  const [jobExperience, setJobExperience] = useState({
-    companyName: "",
-    position: "",
-    responsibility: "",
-    workStartDate: "",
-    workEndDate: "",
-  });
+function PracticalExperienceSection(props) {
+  const { setState } = props
+  const [formData, setFormData] = useState({
+    companyName: '',
+    position: '',
+    responsibility: '',
+    workStartDate: '',
+    workEndDate: '',
+  })
 
   function handleChange(e) {
-    const { name, value } = e.target;
-    setJobExperience((jobE) => ({
-      ...jobE,
+    const { name, value } = e.target
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
-    }));
+    }))
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    console.log(jobExperience);
+    e.preventDefault()
+    setState((prevData) => ({
+      ...prevData,
+      workExperience: [...prevData.workExperience, formData],
+    }))
+
+    setFormData({
+      companyName: '',
+      position: '',
+      responsibility: '',
+      workStartDate: '',
+      workEndDate: '',
+    })
   }
 
   return (
@@ -33,18 +45,11 @@ function PracticalExperienceSection() {
           name="companyName"
           required
           minLength={2}
-          value={jobExperience.companyName}
+          value={formData.companyName}
           onChange={handleChange}
         />
         <label htmlFor="position">Position Title </label>
-        <input
-          type="text"
-          id="position"
-          name="position"
-          required
-          value={jobExperience.position}
-          onChange={handleChange}
-        />
+        <input type="text" id="position" name="position" required value={formData.position} onChange={handleChange} />
         <label htmlFor="responsibility">Main Responsibility </label>
         <textarea
           type="text"
@@ -52,7 +57,7 @@ function PracticalExperienceSection() {
           name="responsibility"
           required
           placeholder="what was your main responsibility?"
-          value={jobExperience.responsibility}
+          value={formData.responsibility}
           onChange={handleChange}
         />
         <div className="dateGroup">
@@ -62,7 +67,7 @@ function PracticalExperienceSection() {
               type="date"
               id="workStartDate"
               name="workStartDate"
-              value={jobExperience.workStartDate}
+              value={formData.workStartDate}
               onChange={handleChange}
             />
           </label>
@@ -72,7 +77,7 @@ function PracticalExperienceSection() {
               type="date"
               id="workEndDate"
               name="workEndDate"
-              value={jobExperience.workEndDate}
+              value={formData.workEndDate}
               onChange={handleChange}
             />
           </label>
@@ -80,7 +85,7 @@ function PracticalExperienceSection() {
         <button type="submit">+ Add Work Experience</button>
       </fieldset>
     </form>
-  );
+  )
 }
 
-export default PracticalExperienceSection;
+export default PracticalExperienceSection

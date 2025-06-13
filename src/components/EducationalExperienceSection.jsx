@@ -1,29 +1,28 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-function EducationalExperienceSection() {
-  const [education, setEducation] = useState([]);
+function EducationalExperienceSection(props) {
+  const { setState } = props
   const [formData, setFormData] = useState({
-    school: "",
-    department: "",
-    graduationDate: "",
-  });
+    school: '',
+    department: '',
+    graduationDate: '',
+  })
 
   function handleChange(e) {
-    const { name, value } = e.target;
-    
+    const { name, value } = e.target
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }));
+    }))
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    setEducation((prevEdu) => [...prevEdu, formData]);
+    e.preventDefault()
+    setState((prevData) => ({ ...prevData, education: [...prevData.education, formData] }))
 
-    setFormData({ school: "", department: "", graduationDate: "" });
+    setFormData({ school: '', department: '', graduationDate: '' })
   }
-  console.log(education);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -37,7 +36,7 @@ function EducationalExperienceSection() {
           required
           minLength={5}
           autoComplete="school"
-          value={education.school}
+          value={formData.school}
           onChange={handleChange}
         />
         <label htmlFor="department">Title of Study </label>
@@ -47,7 +46,7 @@ function EducationalExperienceSection() {
           name="department"
           required
           autoComplete="department"
-          value={education.department}
+          value={formData.department}
           onChange={handleChange}
         />
         <label htmlFor="graduationDate">Graduation Date </label>
@@ -56,13 +55,13 @@ function EducationalExperienceSection() {
           id="graduationDate"
           name="graduationDate"
           required
-          value={education.graduationDate}
+          value={formData.graduationDate}
           onChange={handleChange}
         />
         <button type="submit">+ Add Education</button>
       </fieldset>
     </form>
-  );
+  )
 }
 
-export default EducationalExperienceSection;
+export default EducationalExperienceSection

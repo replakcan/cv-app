@@ -1,24 +1,24 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-function GeneralInformationSection({ generalInfo, setGeneralInfo }) {
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+function GeneralInformationSection({ setState }) {
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '' })
 
   function handleChange(e) {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }));
+    }))
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    setGeneralInfo((prevInfo) => ({
+    e.preventDefault()
+    setState((prevInfo) => ({
       ...prevInfo,
-      generalInfo: { ...generalInfo, formData },
-    }));
+      generalInfo: { formData },
+    }))
 
-    setFormData({ name: "", email: "", phone: "" });
+    setFormData({ name: '', email: '', phone: '' })
   }
 
   return (
@@ -33,7 +33,7 @@ function GeneralInformationSection({ generalInfo, setGeneralInfo }) {
           required
           minLength={2}
           autoComplete="name"
-          value={generalInfo.name}
+          value={formData.name}
           onChange={handleChange}
         />
         <label htmlFor="email">Email </label>
@@ -43,7 +43,7 @@ function GeneralInformationSection({ generalInfo, setGeneralInfo }) {
           name="email"
           required
           autoComplete="email"
-          value={generalInfo.email}
+          value={formData.email}
           onChange={handleChange}
         />
         <label htmlFor="phone">Phone </label>
@@ -56,13 +56,13 @@ function GeneralInformationSection({ generalInfo, setGeneralInfo }) {
           required
           placeholder="123-456-7890"
           autoComplete="tel"
-          value={generalInfo.phone}
+          value={formData.phone}
           onChange={handleChange}
         />
         <button type="submit">Confirm</button>
       </fieldset>
     </form>
-  );
+  )
 }
 
-export default GeneralInformationSection;
+export default GeneralInformationSection
