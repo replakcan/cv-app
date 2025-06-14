@@ -3,9 +3,15 @@ function GenInfoSection({ state }) {
 
   return (
     <>
-      <p>{name}</p>
-      <p>{email}</p>
-      <p>{phone}</p>
+      <p>
+        <span>Name:</span> {name}
+      </p>
+      <p>
+        <span>Email:</span> {email}
+      </p>
+      <p>
+        <span>Phone:</span> {phone}
+      </p>
     </>
   )
 }
