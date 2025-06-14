@@ -1,0 +1,19 @@
+.cv-card {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  line-height: 0.5;
+}
+
+.cv-card > h2 {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid black;
+}
+
+span {
+  font-weight: bold;
+}
+
+.cv-card > div > p:last-child {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid lightgray;
+}
