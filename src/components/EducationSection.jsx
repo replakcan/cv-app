@@ -2,11 +2,20 @@ function EducationSection({ state }) {
   const { school, department, graduationDate } = state
 
   return (
-    <>
-      <p>{school}</p>
-      <p>{department}</p>
-      <p>{graduationDate}</p>
-    </>
+    <div>
+      <p>
+        <span>School: </span>
+        {school}
+      </p>
+      <p>
+        <span>Departmant: </span>
+        {department}
+      </p>
+      <p>
+        <span>GraduationDate: </span>
+        {graduationDate}
+      </p>
+    </div>
   )
 }
 
