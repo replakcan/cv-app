@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import CvForm from './components/CvForm'
-import CvOutput from './components/CvOutput'
+import CvTemplate from './components/CvTemplate'
 
 function App() {
   const [state, setState] = useState({
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <CvForm setState={setState} />
-      <CvOutput state={state} />
+      <CvTemplate state={state} />
     </>
   )
 }
