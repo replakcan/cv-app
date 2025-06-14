@@ -15,7 +15,7 @@ function GeneralInformationSection({ setState }) {
     e.preventDefault()
     setState((prevInfo) => ({
       ...prevInfo,
-      generalInfo: { formData },
+      generalInfo: formData,
     }))
 
     setFormData({ name: '', email: '', phone: '' })
